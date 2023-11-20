@@ -1,0 +1,32 @@
+<h1 mat-dialog-title>Factua es </h1>
+<div mat-dialog-content>
+  <div class="container">
+        <h2> Hola {{data.usuarios.nombre}}:</h2>
+        <div class="card" style="width: 40em;">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><h6>Nombre Producto </h6>
+              <p class="card-text">{{data.productos.nombre}}</p>
+            </li>
+            <li class="list-group-item"><h6>Precio de producto</h6>
+              <p class="card-text">{{data.productos.precio}}</p>
+            </li>
+            <li class="list-group-item"><h6>Cantidad de producto</h6>
+              <p class="card-text">{{data.detallesCompra.cantidad}}</p>
+            </li>
+            <li class="list-group-item"><h6>Total apaga</h6>
+              <p class="card-text">{{data.detallesCompra.total}}</p>
+            </li>
+            <li class="list-group-item"><h6>Fecha De Pago </h6>
+              <p class="card-text">{{data.detallesCompra.updatedAt}}</p>
+            </li>
+       
+          </ul>
+        </div>
+  
+        <br>
+        <button (click)="salir()" class=" text-primary" >
+            Sali
+        </button>
+       
+      </div>
+  </div>

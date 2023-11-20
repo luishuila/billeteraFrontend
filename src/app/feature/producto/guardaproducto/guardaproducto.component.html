@@ -1,0 +1,137 @@
+<div class="container">
+  <div class="row mt-50">
+  
+    <div class="col-md-4">
+  
+        <h3>Seleccione archivos {{archivos.length }}</h3>
+  
+        <div *ngIf="archivos.length == 0" appNgDropFiles [archivos]="archivos" (mouseSobre)="estaSobreElemento = $event" [ngClass]="{ 'file-over': estaSobreElemento }" class="well drop-zone">
+            <h4>Deje caer aquí los archivos</h4>
+            <img src="assets/drop-images.png">
+        </div>
+      
+    </div>
+    
+    <div class="col-md-8">
+      <div  id="container"  class="container login contenedor col-md-12 text-center">
+
+        <div id="card"  class="login-box card">
+          <div class="card-header">Cargar Producto</div>
+          <div id="card-body"  class="card-body">
+         <form [formGroup]="formu" class="example-form">
+
+          <div class="form-group">
+            <p>
+              <mat-form-field appearance="fill" [style.width.em]="20">
+                <mat-label>Nombre de producto</mat-label>
+                <input
+                  formControlName="nombre"
+                  id="Nombre"
+                  name="nombre"
+                  class="nombre"
+                  matInput
+                  placeholder=""
+                  required
+                />
+                <mat-error id="nombre-error"   *ngIf="getError('nombre')">{{ getError('nombre') }}</mat-error>
+              </mat-form-field>
+            </p>
+          </div>
+          <div class="form-group">
+            <p>
+              <mat-form-field appearance="fill" [style.width.em]="20">
+                <mat-label>Precio</mat-label>
+                <input
+                  formControlName="precio"
+                  id="precio"
+                  name="precio"
+                  class="precio"
+                  type="number"
+                  matInput
+                  placeholder="0"
+                  required
+                />
+                <mat-error id="precio-error"   *ngIf="getErrornumero('precio')">{{ getErrornumero('precio') }}</mat-error>
+              </mat-form-field>
+            </p>
+          </div>
+          <div class="form-group">
+            <p>
+              <mat-form-field appearance="fill" [style.width.em]="20">
+                <mat-label>Cantidad de producto</mat-label>
+                <input
+                  formControlName="stock"
+                  id="stock"
+                  name="stock"
+                  class="stock"
+                  type="number"
+                  matInput
+                  placeholder="0"
+                  required
+                />
+                <mat-error id="stock-error"   *ngIf="getErrornumero('stock')">{{ getErrornumero('stock') }}</mat-error>
+              </mat-form-field>
+            </p>
+          </div>
+          <div class="form-group">
+            <p>
+              <input  #fileInput appNgDropFiles type="file" (change)="onFileSelected($event)"  [disabled]="archivos.length > 0" value="seleciona" />
+            </p>
+          </div>
+        <button
+        *ngIf="!spinner"
+        id="create__btn-create"
+        (click)="cargarImagenes()"
+        class="user-create__btn-create btn btn-success"
+        type="submit"
+        [disabled]="!(!formu.invalid && archivos.length !== 0)"
+      >
+        Guardar
+      </button>
+  
+      <button *ngIf="spinner" class=" " type="submit" [disabled]="!(formu.invalid && archivos.length !== 0)">
+        <div class="spinner-border text-primary" role="status">
+          <span class="sr-only"></span>
+        </div>
+      </button>
+  
+        <button (click)="limpiarArchivos(fileInput)" class="btn btn-danger">Limpiar</button>
+      </form>
+    </div>
+  </div>
+    </div>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Nombre archivo</th>
+                    <th>Tamaño</th>
+                    <th>Progreso</th>
+                </tr>
+            </thead>
+  
+            <tbody>
+                <tr *ngFor="let archivo of archivos">
+                    <td [ngClass]="{ 'text-green': archivo.progreso >= 100 }">
+                        {{ archivo.nombreArchivo }}
+                    </td>
+                    <td>
+                        {{ archivo.archivo.size / 1024 /1024 | number: '.2-2' }} MB
+                    </td>
+                    <td>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': archivo.progreso + '%' }"></div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+  
+  
+        </table>
+  
+      </div>
+    </div>
+  
+  
+  
+  </div>
+  

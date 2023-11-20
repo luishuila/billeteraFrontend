@@ -1,0 +1,120 @@
+<div  id="container"  class="container login contenedor col-md-12 text-center">
+
+  <div id="card"  class="login-box card">
+    <div class="card-header">Registra</div>
+    <div id="card-body"  class="card-body">
+      <form   id="form" class="form-horizontal form-material" [formGroup]="formu">
+        <div class="form-group">
+          <p>
+            <mat-form-field appearance="fill" [style.width.em]="20">
+              <mat-label>Nombre</mat-label>
+              <input
+                formControlName="nombre"
+                id="Nombre"
+                name="nombre"
+                class="nombre"
+                matInput
+                placeholder="pat@example.com"
+                required
+              />
+              <mat-error id="nombre-error"   *ngIf="getError('nombre')">{{ getError('nombre') }}</mat-error>
+            </mat-form-field>
+          </p>
+        </div>
+
+        <div class="form-group">
+          <p>
+            <mat-form-field appearance="fill" [style.width.em]="20">
+              <mat-label>Cedula</mat-label>
+              <input
+                formControlName="documento"
+                id="Cedula"
+                name="documento"
+                class="documento"
+                type="number"
+                matInput
+                placeholder="0"
+                required
+              />
+              <mat-error id="documento-error"   *ngIf="getErrornumero('documento')">{{ getErrornumero('documento') }}</mat-error>
+            </mat-form-field>
+          </p>
+        </div>
+
+
+
+        <div class="form-group">
+          <p>
+            <mat-form-field appearance="fill" [style.width.em]="20">
+              <mat-label>Correo Electonico</mat-label>
+              <input
+                formControlName="email"
+                id="email"
+                name="email"
+                class="email"
+                matInput
+                placeholder="pat@example.com"
+                required
+              />
+              <mat-error id="email-error"   *ngIf="getError('email')">{{ getError('email') }}</mat-error>
+            </mat-form-field>
+          </p>
+        </div>
+        <div class="form-group">
+          <mat-form-field appearance="fill" [style.width.em]="20">
+            <mat-label>Contraseña</mat-label>
+
+            <input
+              id="password"
+              formControlName="password"
+              name="password"
+              matInput
+              [type]="hide ? 'password' : 'text'"
+            />
+
+            <mat-error id="password-error"  *ngIf="getErrorPassword('password')">{{ getErrorPassword('password') }}</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="form-group">
+          <p>
+            <mat-form-field appearance="fill" [style.width.em]="20">
+              <mat-label>Celular</mat-label>
+              <input
+                formControlName="celular"
+                id="Nombre"
+                name="celular"
+                class="celular"
+                type="number"
+                matInput
+                placeholder="pat@example.com"
+                required
+              />
+              <mat-error id="celular-error"   *ngIf="getError('celular')">{{ getError('celular') }}</mat-error>
+            </mat-form-field>
+          </p>
+        </div>
+
+
+        <div class="form-group text-center m-t-20">
+          <div class="col-xs-12">
+            <button *ngIf="!spinner" id="btn-login" (click)="save()" class="btn btn-primary" type="submit">
+              Guardar
+            </button>
+
+            <button
+              *ngIf="spinner"
+              class="btn btn-primary"
+              type="submit"
+              [disabled]="!formu.invalid"
+            >
+              <div class="spinner-border text-success" role="status">
+                <span class="sr-only"></span>
+              </div>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

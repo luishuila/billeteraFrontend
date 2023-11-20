@@ -1,0 +1,52 @@
+<mat-sidenav-container #sidenavcontainer class="sidenav-container " class="all-wrap ">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false"
+  >
+    <mat-toolbar >MENÚ</mat-toolbar>
+    <nav class="scroo">
+      <mat-nav-list>
+        <mat-accordion>
+          <app-sidenav> </app-sidenav>
+        </mat-accordion>
+      </mat-nav-list>
+    </nav>
+
+
+    <div class="btnmover">
+      <mat-toolbar *ngIf="login">
+        <button type="button" id="nav-bar__btn-logout" class="btn-primary btn-button" (click)="_loginService.logout()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"/>
+          <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
+        </svg></button>
+      </mat-toolbar>
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="page-wrap ">
+    <header class="  bg-primary">
+      <mat-toolbar  color="primary">
+        <button
+          type="button"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="drawer.toggle()"
+          *ngIf="isHandset$ | async"
+        >
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+        <div class="centra ">
+          <app-header></app-header>
+        </div>
+      </mat-toolbar>
+    </header>
+    <main class="content container">
+  <router-outlet> </router-outlet>
+    </main>
+    <footer class="footer"><app-footer> </app-footer></footer>
+  </mat-sidenav-content>
+</mat-sidenav-container>

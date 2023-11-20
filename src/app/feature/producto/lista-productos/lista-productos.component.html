@@ -1,0 +1,58 @@
+
+<div class="contenedor" id="contenedor" *ngIf="!inputchecked">
+
+  <div class="row">
+  <div class="card text-center" id="card-contenedor center-form " *ngIf="datos.length>0 ">
+    <div id="layout-row" class="layout-row justify-content-around align-items-center"></div>
+
+
+    <form class="justify-content-center">
+      <div class="form-row enlinea">
+
+        <div class="col-6">
+          <label for="exampleInputDate">Fecha de inicio</label>
+          <input name="inputBuscar"  [(ngModel)]="inputBuscar" type="text" class="form-control" >
+        </div>
+      </div>
+    </form>
+
+
+
+  <div class="card-columns ">
+    <div class="row mt-40 " *ngIf="validate">
+      <hr>
+      <div class="row cards center-card mt-10" style="width: auto; margin: auto auto;">
+      <div class="card sepra" style="width: 18rem" *ngFor="let item of datos  |buscar:inputBuscar ">
+     <img class="card-img-top"  [src]="  validaImagenes(urlImg,item.nombreKeyArchivo, 'assets/drop-images.png')    " width="300" height="200" />
+        <div class="card-body">
+        
+          <h5 class="card-title">Nombre de producto: {{item.nombre}}</h5>
+          <p class="card-text">cantidad disponible: {{item.stock}}</p>
+          <p class="card-text">Precio: ${{item.precio}}</p>
+    
+          <hr>
+          <a *ngIf="valida"  class="btn btn-danger" (click)="delete(item)">Eliminar</a>
+          <a   class="btn btn-primary" (click)="compra(item)">Compra</a>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card" *ngIf="datos.length == 0 ">
+  <div class="card-header">
+    Lista
+  </div>
+  <div class="card-body">
+    <p class="card-text">No hay información de la página en los resultados </p>
+  </div>
+</div>
+
+  </div>
+</div>
+
+
+
+
+

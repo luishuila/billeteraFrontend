@@ -1,0 +1,12 @@
+
+  <div class="linea">
+
+    <span *ngIf="!login" class="letra d-flex justify-content-center convina"><a class="nav-link" [routerLink]="['../login']">  Login  </a></span>
+     <span *ngIf="!login"  class="letra d-flex justify-content-center convina"><a class="nav-link" [routerLink]="['../login/registra']"> Registra  </a></span>
+
+
+  <span *ngIf="login" class="letra d-flex justify-content-center convina">Bienvenido</span>
+
+
+
+</div>

@@ -1,0 +1,91 @@
+
+.contenedor {
+  display: flex;
+  flex-direction: column;
+  margin:1rem auto;
+  max-width: 600px;
+}
+.example-form mat-slide-toggle {
+  margin: 8px 0;
+  display: block;
+}
+
+.contenedo {
+  margin-top: 20px;
+  padding: 0;
+}
+
+.checkboxrol {
+  position: relative;
+  left: 6%;
+  margin: 10mm;
+  width: 850px;
+}
+
+.form-check {
+  margin-left: 10px;
+  margin-bottom: 5px;
+}
+
+.my-element {
+  display: inline-block;
+  margin: 0 0.2rem;
+  animation: bounce;
+  /* referring directly to the animation's @keyframe declaration */
+  animation-duration: 0.5s;
+  /* don't forget to set a duration! */
+}
+
+.condiciones{
+text-decoration-line: underline !important;
+color: blue !important;
+}
+.abs-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mat-form-field-bo {
+  margin-left: 20px;
+  background: white;
+  width: 400px;
+}
+
+.btnm {
+  margin-bottom: 50px;
+  margin-top: 10px;
+}
+
+.condicionesmover{
+margin: 30px 0px 30px 0px;
+}
+::ng-deep .mat-datepicker-content .mat-calendar {
+width: 229px!important;
+height: 300px!important;
+}
+@media screen and (max-width: 1050px) and (min-width: 750px) {
+  .mat-form-field-bo {
+      background: white;
+      width: 100%;
+  }
+}
+
+@media screen and (max-width: 750px) and (min-width: 100px) {
+  .mat-form-field-bo {
+      background: white;
+      width: 80%;
+      margin-left: 0;
+  }
+  .form-check {
+      margin-left: 0;
+      margin-bottom: 5px;
+  }
+}
+
+@media screen and (max-width: 800px) and (min-width: 100px) {
+  table {
+      display: none;
+      overflow-x: auto;
+  }
+}

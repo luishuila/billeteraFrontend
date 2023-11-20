@@ -1,0 +1,83 @@
+<div class="text-center">
+  <form *ngIf="!pagarFormulario"   id="form" class="form-horizontal form-material" [formGroup]="formu">
+  <h3 mat-dialog-title>¿Está seguro de que desea compra este producto ?</h3>
+
+  <div class="container-fluid justify-content-center">
+    <div mat-dialog-content>Nombre: {{ data.nombre }}</div>
+
+    <mat-form-field>
+      <mat-label>Cedula</mat-label>
+      <input matInput 
+      formControlName="documento"
+      name="documento"
+      type="number" >
+      <mat-error id="saldo-error"   *ngIf="getErrornumero('documento')">{{ getErrornumero('documento') }}</mat-error>
+    </mat-form-field>
+    
+    <mat-form-field>
+      <mat-label>cantidad</mat-label>
+      <input matInput type="number"
+      formControlName="cantidad"
+      name="cantidad"
+     >
+     <mat-error id="saldo-error"   *ngIf="getErrornumero('cantidad')">{{ getErrornumero('cantidad') }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>celular</mat-label>
+      <input matInput type="number"
+      formControlName="celular"
+      name="celular"
+     >
+     <mat-error id="saldo-error"   *ngIf="getError('celular')">{{ getError('celular') }}</mat-error>
+    </mat-form-field>
+  </div>
+  <hr />
+  <div>
+    <div mat-dialog-actions align="end" class="btnm">
+      <button class="btn btn-primary" [disabled]="spinner" mat-dialog-close>No</button>
+      <button *ngIf="!spinner" class="btn btn-danger" [disabled]="spinner" (click)="compra()">
+        Compar
+      </button>
+      <button *ngIf="spinner" class="btn btn-danger" [disabled]="true" (click)="compra()">
+        <div id="spinner-loading" class="spinner-border text-primary" role="status">
+          <span id="span-loading" class="sr-only"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+  </form>
+
+
+  <form  *ngIf="pagarFormulario"  id="form" class="form-horizontal form-material" >
+    <h3 mat-dialog-title>{{msg}}</h3>
+  
+    <div class="container-fluid justify-content-center">
+      <div mat-dialog-content>Nombre: {{ data.nombre }}</div>
+  
+      <mat-form-field>
+        <mat-label>codigo</mat-label>
+        <input matInput 
+        [(ngModel)]="codigo"
+        name="codigo"
+        type="number" >
+      </mat-form-field>
+      
+
+    </div>
+    <hr />
+    <div>
+      <div mat-dialog-actions align="end" class="btnm">
+        <button class="btn btn-primary" [disabled]="spinner" mat-dialog-close>No</button>
+        <button *ngIf="!spinner" class="btn btn-danger" [disabled]="spinner" (click)="paga()">
+          Paga
+        </button>
+        <button *ngIf="spinner" class="btn btn-danger" [disabled]="true" (click)="paga()">
+          <div id="spinner-loading" class="spinner-border text-primary" role="status">
+            <span id="span-loading" class="sr-only"></span>
+          </div>
+        </button>
+      </div>
+    </div>
+    </form>
+</div>

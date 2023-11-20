@@ -1,0 +1,48 @@
+
+<div class="contenedor" id="contenedor" >
+
+  <div class="row">
+  <div class="card text-center" id="card-contenedor center-form " *ngIf="validaCarga">
+    <div id="layout-row" class="layout-row justify-content-around align-items-center"></div>
+
+
+
+  <div class="card-columns ">
+    <div class="row mt-40 " *ngIf="productos != null">
+
+      <div class="row cards center-card mt-10" style="width: auto; margin: auto auto;">
+      <div class="card sepra" style="width: 18rem" >
+        <div class="card-body">
+          <img class="card-img-top"  [src]="  validaImagenes(urlImg,productos.nombreKeyArchivo, 'assets/drop-images.png')    " width="300" height="200" />
+          <h5 class="card-title">Nombre de producto: {{productos.nombre}}</h5>
+          <p class="card-text">cantidad disponible: {{productos.stock}}</p>
+          <p class="card-text">Precio: ${{productos.precio}}</p>
+    
+          <hr>
+          <button *ngIf="!spinner" class="btn btn-primary" [disabled]="spinner" (click)="compra()">
+            Paga
+          </button>
+          <button *ngIf="spinner" class="btn btn-primary" [disabled]="true" (click)="compra()">
+            <div id="spinner-loading" class="spinner-border text-primary" role="status">
+              <span id="span-loading" class="sr-only"></span>
+            </div>
+          </button>
+
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card" *ngIf="productos == null ">
+  <div class="card-header">
+    Lista
+  </div>
+  <div class="card-body">
+    <p class="card-text">No hay información de la página en los resultados </p>
+  </div>
+</div>
+
+  </div>
+</div>
+

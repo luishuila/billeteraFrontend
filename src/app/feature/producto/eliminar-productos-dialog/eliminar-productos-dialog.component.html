@@ -1,0 +1,21 @@
+<div class="text-center">
+  <h3 mat-dialog-title>¿Está seguro de que desea eliminar este producto?</h3>
+
+  <div class="container-fluid justify-content-center">
+    <div mat-dialog-content>Nombre Producto: {{ data.nombre }}</div>
+  </div>
+  <hr />
+  <div>
+    <div mat-dialog-actions align="end" class="btnm">
+      <button class="btn btn-primary" [disabled]="spinner" mat-dialog-close>No</button>
+      <button *ngIf="!spinner" class="btn btn-danger" [disabled]="spinner" (click)="delete()">
+        Eliminar
+      </button>
+      <button *ngIf="spinner" class="btn btn-danger" [disabled]="true" (click)="delete()">
+        <div id="spinner-loading" class="spinner-border text-primary" role="status">
+          <span id="span-loading" class="sr-only"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<div class="text-center">
+  <h3 mat-dialog-title>¿Está seguro de que desea eliminar usuarios?</h3>
+
+  <div class="container-fluid justify-content-center">
+    <div mat-dialog-content>Nombre: {{ data.nombre }}</div>
+    <div mat-dialog-content>Email: {{ data.email }}</div>
+  </div>
+  <hr />
+  <div>
+    <div mat-dialog-actions align="end" class="btnm">
+      <button class="btn btn-primary" [disabled]="spinner" mat-dialog-close>No</button>
+      <button *ngIf="!spinner" class="btn btn-danger" [disabled]="spinner" (click)="deleteUsers()">
+        Eliminar
+      </button>
+      <button *ngIf="spinner" class="btn btn-danger" [disabled]="true" (click)="deleteUsers()">
+        <div id="spinner-loading" class="spinner-border text-primary" role="status">
+          <span id="span-loading" class="sr-only"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
